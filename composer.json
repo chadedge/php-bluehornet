@@ -1,0 +1,15 @@
+{
+    "name": "dawehner/php-bluehornet",
+    "description": "Provides an easy to use wrapper for the bluehornet email service.",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "~6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.4"
+    },
+    "autoload": {
+        "Dawehner\\Bluehornet\\": "src"
+    },
+    "license": "MIT"
+}
