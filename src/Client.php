@@ -2,8 +2,9 @@
 
 namespace Dawehner\Bluehornet;
 
-use Dawehner\Bluehornet\Methods\LegacyManageSubscriber;
+use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
 use LSS\Array2XML;
+use LSS\XML2Array;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\YamlFileLoader;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -11,8 +12,12 @@ use Symfony\Component\Serializer\Serializer;
 
 class Client
 {
-    private $apiKey;
-    private $sharedSecret;
+    protected $client;
+
+    protected $apiKey;
+    protected $sharedSecret;
+
+    protected $url = 'https://echo.bluehornet.com/api/xmlrpc/index.php';
 
 
     /**
@@ -22,10 +27,11 @@ class Client
      * @param string $shared_secret
      *   The shared secret.
      */
-    public function __construct($api_key, $shared_secret)
+    public function __construct($api_key, $shared_secret, \GuzzleHttp\Client $client = null)
     {
         $this->apiKey = $api_key;
         $this->sharedSecret = $shared_secret;
+        $this->client = $client;
     }
 
     public function createRequest()
@@ -35,6 +41,9 @@ class Client
         return $request;
     }
 
+    /**
+     * @return \Dawehner\Bluehornet\Response
+     */
     public function sendRequest(Request $request)
     {
         $normalizer = new ObjectNormalizer(new ClassMetadataFactory(new YamlFileLoader(__DIR__ . '/normalizer.yml')));
@@ -42,8 +51,16 @@ class Client
 
         $data = $serializer->normalize($request, null, ['groups' => ['main']]);
 
-        $xml = Array2XML::createXML('api', $data);
-        return $xml->saveXML();
+        $httpResponse = $this->client->post($this->url, [
+            'body' => Array2XML::createXML('api', $data)->saveXML(),
+        ]);
+        $array = XML2Array::createArray((string) $httpResponse->getBody());
+
+        $responseData = $array['methodResponse']['item']['responseData'];
+        $methodResponse = $serializer->denormalize($responseData, LegacyDeleteSubscribers::class);
+
+        $response = new Response($httpResponse, $methodResponse);
+        return $response;
     }
 
 }

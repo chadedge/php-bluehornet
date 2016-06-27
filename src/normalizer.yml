@@ -22,3 +22,12 @@ Dawehner\Bluehornet\Request:
           groups: ['main']
         data:
           groups: ['main']
+
+Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers:
+    attributes:
+        message:
+          groups: ['main']
+        job_id:
+          groups: ['main']
+        reason:
+          groups: ['main']

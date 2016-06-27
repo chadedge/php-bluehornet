@@ -2,7 +2,7 @@
 
 namespace Dawehner\Bluehornet\MethodResponses;
 
-class LegacyManySubscribe
+class LegacyManySubscribe extends ResponseBase
 {
     protected $status;
 
