@@ -75,6 +75,8 @@ class LegacyManageSubscriber extends MethodBase
 
     protected $channel_source;
 
+    protected $methodName = 'legacy.manage_subscriber';
+
     /**
      * Creates a new LegacyManageSubscriber instance.
      *
@@ -83,7 +85,6 @@ class LegacyManageSubscriber extends MethodBase
      */
     public function __construct($email)
     {
-        parent::__construct('legacy.manage_subscriber');
         $this->email = $email;
     }
 

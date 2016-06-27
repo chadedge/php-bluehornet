@@ -3,6 +3,8 @@
 namespace Dawehner\Bluehornet\Tests;
 
 use Dawehner\Bluehornet\Client;
+use Dawehner\Bluehornet\MethodResponses;
+use Dawehner\Bluehornet\Methods;
 use GuzzleHttp\Psr7\Response;
 use Prophecy\Argument;
 
@@ -15,9 +17,32 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client->post(Argument::cetera())->willReturn(new Response(200, [], $xml));
         return $client;
     }
+
+    public function testDeleteSubscriberRequest()
+    {
+        $deleteSubscriberMethod = new Methods\LegacyDeleteSubscribers();
+
+        $xml = <<<XML
+<methodCall>
+    <methodName>legacy.delete_subscribers</methodName>
+    <reply_email>adam@bluehornet.com</reply_email>
+    <optout>N</optout>
+    <data_url>https://www.mysite.com/list.txt</data_url>
+</methodCall>              
+XML;
+        $bluehornetClient = new Client('foo', 'bar', $this->setupHttpClient($xml)->reveal());
+        $request = $bluehornetClient->createRequest();
+        $request->addMethodCall($deleteSubscriberMethod);
+            
+
+        $request = $bluehornetClient->createRequest();
+
+    }
+
     public function testDeleteSubscriberResponse()
     {
-        $xml = '<methodResponse>
+        $xml = <<<XML
+<methodResponse>
     <item>
         <methodName>legacy.delete_subscribers</methodName>
         <responseData>
@@ -26,7 +51,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         </responseData>
         <responseNum>1</responseNum>
     </item>
-</methodResponse>';
+</methodResponse>
+XML;
 
         $bluehornetClient = new Client('foo', 'bar', $this->setupHttpClient($xml)->reveal());
         $request = $bluehornetClient->createRequest();
