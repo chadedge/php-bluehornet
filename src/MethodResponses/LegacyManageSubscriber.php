@@ -2,14 +2,14 @@
 
 namespace Dawehner\Bluehornet\MethodResponses;
 
-class LegacyManySubscribe extends ResponseBase
+class LegacyManageSubscriber extends ResponseBase
 {
     protected $status;
 
     protected $message;
 
     /**
-     * Creates a new LegacyManySubscribe instance.
+     * Creates a new LegacyManageSubscriber instance.
      * @param $status
      * @param $message
      */

@@ -5,6 +5,7 @@ namespace Dawehner\Bluehornet\Tests;
 use Dawehner\Bluehornet\Client;
 use Dawehner\Bluehornet\MethodResponses;
 use Dawehner\Bluehornet\MethodRequests;
+use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
 use GuzzleHttp\Psr7\Response;
 use Prophecy\Argument;
 
@@ -60,9 +61,37 @@ XML;
         $response = $bluehornetClient->sendRequest($request);
         /** @var \Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers $methodResponse */
         $methodResponse = $response->getMethodResponse();
+        $this->assertInstanceOf(LegacyDeleteSubscribers::class, $methodResponse);
 
         $this->assertEquals(862254, $methodResponse->getJobId());
         $this->assertEquals(1, $methodResponse->getMessage());
+    }
+
+    public function testManageSubscriberResponse()
+    {
+        $xml = <<<XML
+<methodResponse>
+    <item>
+        <methodName>legacy.manage_subscriber</methodName>
+        <responseData>
+            <status>2</status>
+            <message>User has been updated</message>
+        </responseData>
+        <responseNum>1</responseNum>
+    </item>
+</methodResponse>
+XML;
+
+        $bluehornetClient = new Client('foo', 'bar', $this->setupHttpClient($xml)->reveal());
+        $request = $bluehornetClient->createRequest();
+
+        $response = $bluehornetClient->sendRequest($request);
+        /** @var \Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber $methodResponse */
+        $methodResponse = $response->getMethodResponse();
+        $this->assertInstanceOf(MethodResponses\LegacyManageSubscriber::class, $methodResponse);
+
+        $this->assertEquals(2, $methodResponse->getStatus());
+        $this->assertEquals('User has been updated', $methodResponse->getMessage());
     }
 
 }

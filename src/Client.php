@@ -3,6 +3,7 @@
 namespace Dawehner\Bluehornet;
 
 use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
+use Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber;
 use LSS\Array2XML;
 use LSS\XML2Array;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
@@ -57,7 +58,20 @@ class Client
         $array = XML2Array::createArray((string) $httpResponse->getBody());
 
         $responseData = $array['methodResponse']['item']['responseData'];
-        $methodResponse = $serializer->denormalize($responseData, LegacyDeleteSubscribers::class);
+        $methodName = $array['methodResponse']['item']['methodName'];
+
+        switch ($methodName) {
+            case 'legacy.manage_subscriber':
+                $class = LegacyManageSubscriber::class;
+                break;
+            case 'legacy.delete_subscribers':
+                $class = LegacyDeleteSubscribers::class;
+                break;
+            default:
+                throw new \InvalidArgumentException();
+        }
+
+        $methodResponse = $serializer->denormalize($responseData, $class);
 
         $response = new Response($httpResponse, $methodResponse);
         return $response;

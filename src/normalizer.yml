@@ -1,9 +1,9 @@
-Dawehner\Bluehornet\Methods\LegacyManageSubscriber:
+Dawehner\Bluehornet\Request:
     attributes:
-        methodName:
-            groups: ['main']
-        email:
-            groups: ['main']
+        authentication:
+          groups: ['main']
+        data:
+          groups: ['main']
 
 Dawehner\Bluehornet\Authentication:
     attributes:
@@ -16,18 +16,24 @@ Dawehner\Bluehornet\Authentication:
         no_halt:
           groups: ['main']
 
-Dawehner\Bluehornet\Request:
+Dawehner\Bluehornet\Methods\LegacyManageSubscriber:
     attributes:
-        authentication:
-          groups: ['main']
-        data:
-          groups: ['main']
+        methodName:
+            groups: ['main']
+        email:
+            groups: ['main']
 
 Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers:
     attributes:
         message:
           groups: ['main']
         job_id:
+          groups: ['main']
+        reason:
+          groups: ['main']
+Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber:
+    attributes:
+        message:
           groups: ['main']
         reason:
           groups: ['main']
