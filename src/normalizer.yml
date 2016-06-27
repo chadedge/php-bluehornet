@@ -1,0 +1,24 @@
+Dawehner\Bluehornet\Methods\LegacyManageSubscriber:
+    attributes:
+        methodName:
+            groups: ['main']
+        email:
+            groups: ['main']
+
+Dawehner\Bluehornet\Authentication:
+    attributes:
+        api_key:
+          groups: ['main']
+        shared_secret:
+          groups: ['main']
+        response_type:
+          groups: ['main']
+        no_halt:
+          groups: ['main']
+
+Dawehner\Bluehornet\Request:
+    attributes:
+        authentication:
+          groups: ['main']
+        data:
+          groups: ['main']
