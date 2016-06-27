@@ -4,7 +4,7 @@ namespace Dawehner\Bluehornet\Tests;
 
 use Dawehner\Bluehornet\Client;
 use Dawehner\Bluehornet\MethodResponses;
-use Dawehner\Bluehornet\Methods;
+use Dawehner\Bluehornet\MethodRequests;
 use GuzzleHttp\Psr7\Response;
 use Prophecy\Argument;
 
@@ -20,7 +20,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testDeleteSubscriberRequest()
     {
-        $deleteSubscriberMethod = new Methods\LegacyDeleteSubscribers();
+        $deleteSubscriberMethod = new MethodRequests\LegacyDeleteSubscribers();
 
         $xml = <<<XML
 <methodCall>

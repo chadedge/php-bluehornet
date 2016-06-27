@@ -2,7 +2,7 @@
 
 namespace Dawehner\Bluehornet;
 
-use Dawehner\Bluehornet\Methods\MethodBase;
+use Dawehner\Bluehornet\MethodRequests\MethodBase;
 
 class Request
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dawehner\Bluehornet\Methods;
+namespace Dawehner\Bluehornet\MethodRequests;
 
 class AddCustomField extends MethodBase
 {
