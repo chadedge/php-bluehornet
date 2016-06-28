@@ -38,5 +38,4 @@ class Request
     {
         return $this->data;
     }
-
 }

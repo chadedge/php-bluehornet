@@ -34,5 +34,4 @@ class LegacyManageSubscriber extends ResponseBase
     {
         return $this->message;
     }
-
 }

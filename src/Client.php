@@ -76,5 +76,4 @@ class Client
         $response = new Response($httpResponse, $methodResponse);
         return $response;
     }
-
 }

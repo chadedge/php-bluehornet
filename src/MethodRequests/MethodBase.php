@@ -25,5 +25,4 @@ abstract class MethodBase
     {
         return $this->methodName;
     }
-
 }

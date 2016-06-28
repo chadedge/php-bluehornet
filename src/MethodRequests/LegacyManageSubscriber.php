@@ -95,5 +95,4 @@ class LegacyManageSubscriber extends MethodBase
     {
         return $this->email;
     }
-
 }

@@ -20,5 +20,4 @@ class LegacyDeleteSubscribers extends MethodBase
     protected $filename;
 
     protected $server_folder;
-
 }

@@ -12,7 +12,7 @@ class Response
     protected $httpResponse;
 
     /**
-     * @var 
+     * @var \Dawehner\Bluehornet\MethodResponses\ResponseBase
      */
     protected $methodResponse;
 
@@ -42,5 +42,4 @@ class Response
     {
         return $this->methodResponse;
     }
-
 }

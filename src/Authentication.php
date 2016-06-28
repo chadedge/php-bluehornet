@@ -45,5 +45,4 @@ class Authentication
             'no_halt' => $this->no_halt,
         ];
     }
-
 }
