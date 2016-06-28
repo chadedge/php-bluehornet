@@ -82,10 +82,13 @@ class LegacyManageSubscriber extends MethodBase
      *
      * @param string $email
      *   The email.
+     * @param string|null $grp
+     *   The GRP segments.
      */
-    public function __construct($email)
+    public function __construct($email, $grp = null)
     {
         $this->email = $email;
+        $this->grp = $grp;
     }
 
     /**
@@ -94,5 +97,13 @@ class LegacyManageSubscriber extends MethodBase
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGrp()
+    {
+        return $this->grp;
     }
 }
