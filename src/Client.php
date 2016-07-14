@@ -47,7 +47,7 @@ class Client
      */
     public function sendRequest(Request $request)
     {
-        $normalizer = new ObjectNormalizer(new ClassMetadataFactory(new YamlFileLoader(__DIR__ . '/normalizer.yml')));
+        $normalizer = new Normalizer();
         $serializer = new Serializer([$normalizer]);
 
         $data = $serializer->normalize($request, null, ['groups' => ['main']]);

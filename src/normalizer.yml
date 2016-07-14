@@ -16,11 +16,66 @@ Dawehner\Bluehornet\Authentication:
         no_halt:
           groups: ['main']
 
-Dawehner\Bluehornet\Methods\LegacyManageSubscriber:
+Dawehner\Bluehornet\MethodsRequests\LegacyManageSubscriber:
     attributes:
         methodName:
             groups: ['main']
         email:
+            groups: ['main']
+
+Dawehner\Bluehornet\MethodsRequests\LegacySendCampaign:
+    attributes:
+        methodName:
+            groups: ['main']
+        grp:
+            groups: ['main']
+        sm:
+            groups: ['main']
+        sm_exclude:
+            groups: ['main']
+        rich_mbody:
+            groups: ['main']
+        text_mbody:
+            groups: ['main']
+        send:
+            groups: ['main']
+        reply_email:
+            groups: ['main']
+        from_email:
+            groups: ['main']
+        fromdesc:
+            groups: ['main']
+        msubject:
+            groups: ['main']
+        timed_release:
+            groups: ['main']
+        date:
+            groups: ['main']
+        hour:
+            groups: ['main']
+        substitute_name:
+            groups: ['main']
+        bill_codes:
+            groups: ['main']
+        message_notes:
+            groups: ['main']
+        campaign_id:
+            groups: ['main']
+        track_links:
+            groups: ['main']
+        grp_exclude:
+            groups: ['main']
+        use_default_footer:
+            groups: ['main']
+        binding:
+            groups: ['main']
+        throttle_rate:
+            groups: ['main']
+        message_name:
+            groups: ['main']
+        footer_id:
+            groups: ['main']
+        inbox_monitor:
             groups: ['main']
 
 Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers:
