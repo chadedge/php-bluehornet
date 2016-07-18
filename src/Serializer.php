@@ -5,6 +5,7 @@ namespace Dawehner\Bluehornet;
 use Dawehner\Bluehornet\MethodResponses\LegacySendCampaign;
 use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
 use Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber;
+use Dawehner\Bluehornet\MethodResponses\Message;
 use LSS\Array2XML;
 use LSS\XML2Array;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -36,6 +37,12 @@ class Serializer implements SerializerInterface
     public function deserialize($data, $type, $format, array $context = array())
     {
         $array = XML2Array::createArray($data);
+
+        if (empty($array['methodResponse']['item']['responseData'])) {
+            $methodResponse = $this->serializer->denormalize($array['methodResponse']['item'], Message::class);
+            $response = new Response($context['http_response'], $methodResponse);
+            return $response;
+        }
 
         $responseData = $array['methodResponse']['item']['responseData'];
         $methodName = $array['methodResponse']['item']['methodName'];
