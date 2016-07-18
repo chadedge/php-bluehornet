@@ -2,6 +2,7 @@
 
 namespace Dawehner\Bluehornet;
 
+use Dawehner\Bluehornet\MethodResponses\LegacySendCampaign;
 use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
 use Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber;
 use LSS\Array2XML;
@@ -46,8 +47,11 @@ class Serializer implements SerializerInterface
             case 'legacy.delete_subscribers':
                 $class = LegacyDeleteSubscribers::class;
                 break;
+            case 'legacy.send_campaign':
+                $class = LegacySendCampaign::class;
+                break;
             default:
-                throw new \InvalidArgumentException();
+                throw new \InvalidArgumentException("Not supported method: $methodName");
         }
 
         $methodResponse = $this->serializer->denormalize($responseData, $class);

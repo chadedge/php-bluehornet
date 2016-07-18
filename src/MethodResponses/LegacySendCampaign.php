@@ -19,7 +19,7 @@ class LegacySendCampaign
      * This element will only be included in the response message when the POST
      * is successful. The value is set to ‘1’.
      *
-     * @var int
+     * @var int|null
      */
     protected $sent;
 
@@ -37,7 +37,7 @@ class LegacySendCampaign
      * @param int $sent
      * @param string $reason
      */
-    public function __construct($message, $sent, $reason)
+    public function __construct($message, $sent = NULL, $reason = '')
     {
         $this->message = $message;
         $this->sent = $sent;
