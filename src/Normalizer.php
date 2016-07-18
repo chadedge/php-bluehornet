@@ -7,11 +7,13 @@ use Symfony\Component\Serializer\Mapping\Loader\YamlFileLoader;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\SerializerAwareInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Provides a normalizer used for the method requests and responses.
  */
-class Normalizer implements NormalizerInterface, DenormalizerInterface
+class Normalizer implements NormalizerInterface, DenormalizerInterface, SerializerAwareInterface
 {
     /**
      * @var ObjectNormalizer
@@ -29,6 +31,16 @@ class Normalizer implements NormalizerInterface, DenormalizerInterface
             ),
             new SnakeCaseConverter(['methodName'])
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSerializer(SerializerInterface $serializer)
+    {
+        if ($this->normalizer instanceof SerializerAwareInterface) {
+            $this->normalizer->setSerializer($serializer);
+        }
     }
 
     public function denormalize($data, $class, $format = null, array $context = array())

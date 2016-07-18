@@ -47,33 +47,14 @@ class Client
      */
     public function sendRequest(Request $request)
     {
-        $normalizer = new Normalizer();
-        $serializer = new Serializer([$normalizer]);
-
-        $data = $serializer->normalize($request, null, ['groups' => ['main']]);
+        $serializer = new \Dawehner\Bluehornet\Serializer();
 
         $httpResponse = $this->client->post($this->url, [
-            'body' => Array2XML::createXML('api', $data)->saveXML(),
+            'body' => $serializer->serialize($request, null, ['groups' => ['main']]),
         ]);
-        $array = XML2Array::createArray((string) $httpResponse->getBody());
+        $response = $serializer->deserialize((string) $httpResponse->getBody(), Response::class, 'xml',
+            ['http_response' => $httpResponse]);
 
-        $responseData = $array['methodResponse']['item']['responseData'];
-        $methodName = $array['methodResponse']['item']['methodName'];
-
-        switch ($methodName) {
-            case 'legacy.manage_subscriber':
-                $class = LegacyManageSubscriber::class;
-                break;
-            case 'legacy.delete_subscribers':
-                $class = LegacyDeleteSubscribers::class;
-                break;
-            default:
-                throw new \InvalidArgumentException();
-        }
-
-        $methodResponse = $serializer->denormalize($responseData, $class);
-
-        $response = new Response($httpResponse, $methodResponse);
         return $response;
     }
 }
