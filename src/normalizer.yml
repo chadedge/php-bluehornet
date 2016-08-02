@@ -92,3 +92,27 @@ Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber:
           groups: ['main']
         reason:
           groups: ['main']
+Dawehner\Bluehornet\MethodResponses\TransactionalListTemplate:
+    attributes:
+          template_id:
+              groups: ['main']
+          from_description:
+              groups: ['main']
+          from_email:
+              groups: ['main']
+          reply_email:
+              groups: ['main']
+          subject:
+              groups: ['main']
+          message_notes:
+              groups: ['main']
+          bill_codes:
+              groups: ['main']
+          template_data:
+              groups: ['main']
+          html:
+              groups: ['main']
+          plain:
+              groups: ['main']
+          binding:
+              groups: ['main']

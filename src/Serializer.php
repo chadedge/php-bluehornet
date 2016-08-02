@@ -6,6 +6,8 @@ use Dawehner\Bluehornet\MethodResponses\LegacySendCampaign;
 use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
 use Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber;
 use Dawehner\Bluehornet\MethodResponses\Message;
+use Dawehner\Bluehornet\MethodResponses\TransactionalListTemplate;
+use Dawehner\Bluehornet\MethodResponses\TransactionalListTemplates;
 use LSS\Array2XML;
 use LSS\XML2Array;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -38,6 +40,11 @@ class Serializer implements SerializerInterface
     {
         $array = XML2Array::createArray($data);
 
+        $methodName = $array['methodResponse']['item']['methodName'];
+        if ($methodName === 'transactional.listtemplates') {
+            return $this->deserializeListTemplates($array, $context);
+        }
+
         if (empty($array['methodResponse']['item']['responseData'])) {
             $methodResponse = $this->serializer->denormalize($array['methodResponse']['item'], Message::class);
             $response = new Response($context['http_response'], $methodResponse);
@@ -46,7 +53,6 @@ class Serializer implements SerializerInterface
         }
 
         $responseData = $array['methodResponse']['item']['responseData'];
-        $methodName = $array['methodResponse']['item']['methodName'];
 
         switch ($methodName) {
             case 'legacy.manage_subscriber':
@@ -63,6 +69,20 @@ class Serializer implements SerializerInterface
         }
 
         $methodResponse = $this->serializer->denormalize($responseData, $class);
+        $response = new Response($context['http_response'], $methodResponse);
+
+        return $response;
+    }
+
+    protected function deserializeListTemplates(array $array, array $context)
+    {
+        $items = [];
+        foreach ($array['methodResponse']['item']['item'] as $item) {
+            $items[] = $this->serializer->denormalize($item, TransactionalListTemplate::class);
+        }
+
+        $methodResponse = new TransactionalListTemplates($items);
+
         $response = new Response($context['http_response'], $methodResponse);
 
         return $response;
