@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Bluehornet\Tests\MethodResponses;
+namespace Drupal\Bluehornet\tests\MethodResponses;
 
 use Dawehner\Bluehornet\MethodResponses\LegacySendCampaign;
 use Dawehner\Bluehornet\Response;
@@ -68,5 +68,4 @@ XML;
         $this->assertNull($method_response->getSent());
         $this->assertEquals('timed-release day/time is in the past', $method_response->getReason());
     }
-
 }

@@ -41,6 +41,7 @@ class Serializer implements SerializerInterface
         if (empty($array['methodResponse']['item']['responseData'])) {
             $methodResponse = $this->serializer->denormalize($array['methodResponse']['item'], Message::class);
             $response = new Response($context['http_response'], $methodResponse);
+
             return $response;
         }
 
@@ -63,7 +64,7 @@ class Serializer implements SerializerInterface
 
         $methodResponse = $this->serializer->denormalize($responseData, $class);
         $response = new Response($context['http_response'], $methodResponse);
+
         return $response;
     }
-
 }

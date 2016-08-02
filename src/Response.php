@@ -18,6 +18,7 @@ class Response
 
     /**
      * Creates a new Response instance.
+     *
      * @param \Psr\Http\Message\ResponseInterface $httpResponse
      * @param $methodResponse
      */

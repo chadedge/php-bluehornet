@@ -6,7 +6,6 @@ use Dawehner\Bluehornet\MethodRequests\MethodBase;
 
 class Request
 {
-    
     protected $authentication;
 
     protected $data;
@@ -14,12 +13,14 @@ class Request
     public function setAuthentication(Authentication $authentication)
     {
         $this->authentication = $authentication;
+
         return $this;
     }
 
     public function addMethodCall(MethodBase $method)
     {
         $this->data['methodCall'] = $method;
+
         return $this;
     }
 

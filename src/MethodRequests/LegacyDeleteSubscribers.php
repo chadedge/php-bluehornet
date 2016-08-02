@@ -4,7 +4,6 @@ namespace Dawehner\Bluehornet\MethodRequests;
 
 class LegacyDeleteSubscribers extends MethodBase
 {
-
     protected $reply_email;
 
     protected $optout;

@@ -2,15 +2,6 @@
 
 namespace Dawehner\Bluehornet;
 
-use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
-use Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber;
-use LSS\Array2XML;
-use LSS\XML2Array;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Loader\YamlFileLoader;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
-
 class Client
 {
     protected $client;
@@ -20,9 +11,9 @@ class Client
 
     protected $url = 'https://echo.bluehornet.com/api/xmlrpc/index.php';
 
-
     /**
      * Creates a new Client instance.
+     *
      * @param string $api_key
      *   The API key.
      * @param string $shared_secret
@@ -39,6 +30,7 @@ class Client
     {
         $request = new Request();
         $request->setAuthentication(new Authentication($this->apiKey, $this->sharedSecret, 'xml'));
+
         return $request;
     }
 

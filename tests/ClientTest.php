@@ -1,6 +1,6 @@
 <?php
 
-namespace Dawehner\Bluehornet\Tests;
+namespace Dawehner\Bluehornet\tests;
 
 use Dawehner\Bluehornet\Client;
 use Dawehner\Bluehornet\MethodResponses;
@@ -11,11 +11,11 @@ use Prophecy\Argument;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-
     protected function setupHttpClient($xml)
     {
         $client = $this->prophesize(\GuzzleHttp\Client::class);
         $client->post(Argument::cetera())->willReturn(new Response(200, [], $xml));
+
         return $client;
     }
 
@@ -34,10 +34,8 @@ XML;
         $bluehornetClient = new Client('foo', 'bar', $this->setupHttpClient($xml)->reveal());
         $request = $bluehornetClient->createRequest();
         $request->addMethodCall($deleteSubscriberMethod);
-            
 
         $request = $bluehornetClient->createRequest();
-
     }
 
     public function testDeleteSubscriberResponse()
@@ -93,5 +91,4 @@ XML;
         $this->assertEquals(2, $methodResponse->getStatus());
         $this->assertEquals('User has been updated', $methodResponse->getMessage());
     }
-
 }

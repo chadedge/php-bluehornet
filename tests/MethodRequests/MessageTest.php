@@ -1,6 +1,6 @@
 <?php
 
-namespace Dawehner\Bluehornet\Tests\MethodRequests;
+namespace Dawehner\Bluehornet\tests\MethodRequests;
 
 use Dawehner\Bluehornet\MethodRequests\Message;
 use Dawehner\Bluehornet\Normalizer;
@@ -10,7 +10,6 @@ use Dawehner\Bluehornet\Normalizer;
  */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testNormalizer()
     {
         $normalizer = new Normalizer();
@@ -21,5 +20,4 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('8ff953dd97c4405234a04291dee39e', $result['message_key']);
         $this->assertEquals('legacy.send_campaign', $result['methodName']);
     }
-
 }

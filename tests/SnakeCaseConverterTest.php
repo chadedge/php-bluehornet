@@ -1,6 +1,6 @@
 <?php
 
-namespace Dawehner\Bluehornet\Tests;
+namespace Dawehner\Bluehornet\tests;
 
 use Dawehner\Bluehornet\SnakeCaseConverter;
 
@@ -71,5 +71,4 @@ class SnakeCaseConverterTest extends \PHPUnit_Framework_TestCase
 
         return $data;
     }
-
 }

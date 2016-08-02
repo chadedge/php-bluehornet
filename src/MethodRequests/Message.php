@@ -19,6 +19,7 @@ class Message extends MethodBase
 
     /**
      * Creates a new Message instance.
+     *
      * @param string $messageKey
      */
     public function __construct($messageKey, $methodName)
@@ -39,5 +40,4 @@ class Message extends MethodBase
     {
         return $this->messageKey;
     }
-
 }

@@ -10,6 +10,7 @@ class LegacyManageSubscriber extends ResponseBase
 
     /**
      * Creates a new LegacyManageSubscriber instance.
+     *
      * @param $status
      * @param $message
      */

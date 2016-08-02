@@ -33,11 +33,12 @@ class LegacySendCampaign
 
     /**
      * Creates a new LegacySendCampaign instance.
+     *
      * @param int $message
      * @param int $sent
      * @param string $reason
      */
-    public function __construct($message, $sent = NULL, $reason = '')
+    public function __construct($message, $sent = null, $reason = '')
     {
         $this->message = $message;
         $this->sent = $sent;
@@ -67,5 +68,4 @@ class LegacySendCampaign
     {
         return $this->reason;
     }
-
 }

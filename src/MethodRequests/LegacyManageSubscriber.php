@@ -80,10 +80,10 @@ class LegacyManageSubscriber extends MethodBase
     /**
      * Creates a new LegacyManageSubscriber instance.
      *
-     * @param string $email
-     *   The email.
+     * @param string      $email
+     *                           The email.
      * @param string|null $grp
-     *   The GRP segments.
+     *                           The GRP segments.
      */
     public function __construct($email, $grp = null)
     {

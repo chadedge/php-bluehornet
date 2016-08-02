@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Bluehornet\Tests\MethodResponses;
+namespace Drupal\Bluehornet\tests\MethodResponses;
 
 use Dawehner\Bluehornet\MethodResponses\Message;
 use Dawehner\Bluehornet\Response;
@@ -37,7 +37,5 @@ XML;
         $this->assertEquals(1, $method_response->getMessage());
         $this->assertEquals(1029304, $method_response->getId());
         $this->assertEquals('8ff953dd97c4405234a04291dee39e', $method_response->getKey());
-
     }
-
 }

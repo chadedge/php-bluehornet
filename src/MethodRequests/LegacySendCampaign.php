@@ -46,14 +46,14 @@ class LegacySendCampaign extends MethodBase
     protected $sm_exclude;
 
     /**
-     * The HTML content for the message
+     * The HTML content for the message.
      *
      * @var string
      */
     protected $rich_mbody;
 
     /**
-     * The plain text content for the message
+     * The plain text content for the message.
      *
      * @var string
      */
@@ -81,14 +81,14 @@ class LegacySendCampaign extends MethodBase
     protected $from_email;
 
     /**
-     * The “friendly from name” visible to the subscriber
+     * The “friendly from name” visible to the subscriber.
      *
      * @var string
      */
     protected $fromdesc;
 
     /**
-     * The subject of the email
+     * The subject of the email.
      *
      * @var string
      */
@@ -103,7 +103,7 @@ class LegacySendCampaign extends MethodBase
     protected $timed_release;
 
     /**
-     * The date when the message is to be sent in YYYY-MM-DD format
+     * The date when the message is to be sent in YYYY-MM-DD format.
      *
      * @var string
      */
@@ -113,7 +113,7 @@ class LegacySendCampaign extends MethodBase
      * The hour of the day in which to send the message (24 hour clock as an
      * integer). All send times are in US Pacific Time Zone.
      *
-     * @var integer
+     * @var int
      */
     protected $hour;
 
@@ -126,7 +126,7 @@ class LegacySendCampaign extends MethodBase
     protected $substitude_name;
 
     /**
-     * A text field for customer’s internal billing information
+     * A text field for customer’s internal billing information.
      *
      * @var string
      */
@@ -142,7 +142,7 @@ class LegacySendCampaign extends MethodBase
 
     /**
      * A campaign ID internal to the system to make this message part of a
-     * larger campaign
+     * larger campaign.
      *
      * @var int
      */
@@ -150,7 +150,7 @@ class LegacySendCampaign extends MethodBase
 
     /**
      * Set this element to ‘1’ if you want the system to track all links within
-     * the message
+     * the message.
      *
      * @var int
      */
@@ -190,14 +190,14 @@ class LegacySendCampaign extends MethodBase
     /**
      * Allows specification of the message send rate, using the same send values
      * available in EMS. (Requires throttle rate feature enabled for EMS
-     * account.)
+     * account.).
      *
      * @var int
      */
     protected $throttle_rate;
 
     /**
-     * Allows specification of a Message Name
+     * Allows specification of a Message Name.
      *
      * @var string
      */
@@ -222,251 +222,301 @@ class LegacySendCampaign extends MethodBase
 
     /**
      * @param string $grp
+     *
      * @return LegacySendCampaign
      */
     public function setGrp($grp)
     {
         $this->grp = $grp;
+
         return $this;
     }
 
     /**
      * @param string $sm
+     *
      * @return LegacySendCampaign
      */
     public function setSm($sm)
     {
         $this->sm = $sm;
+
         return $this;
     }
 
     /**
      * @param string $sm_exclude
+     *
      * @return LegacySendCampaign
      */
     public function setSmExclude($sm_exclude)
     {
         $this->sm_exclude = $sm_exclude;
+
         return $this;
     }
 
     /**
      * @param string $rich_mbody
+     *
      * @return LegacySendCampaign
      */
     public function setRichMbody($rich_mbody)
     {
         $this->rich_mbody = $rich_mbody;
+
         return $this;
     }
 
     /**
      * @param string $text_mbody
+     *
      * @return LegacySendCampaign
      */
     public function setTextMbody($text_mbody)
     {
         $this->text_mbody = $text_mbody;
+
         return $this;
     }
 
     /**
      * @param string $send
+     *
      * @return LegacySendCampaign
      */
     public function setSend($send)
     {
         $this->send = $send;
+
         return $this;
     }
 
     /**
      * @param string $reply_email
+     *
      * @return LegacySendCampaign
      */
     public function setReplyEmail($reply_email)
     {
         $this->reply_email = $reply_email;
+
         return $this;
     }
 
     /**
      * @param string $from_email
+     *
      * @return LegacySendCampaign
      */
     public function setFromEmail($from_email)
     {
         $this->from_email = $from_email;
+
         return $this;
     }
 
     /**
      * @param string $fromdesc
+     *
      * @return LegacySendCampaign
      */
     public function setFromdesc($fromdesc)
     {
         $this->fromdesc = $fromdesc;
+
         return $this;
     }
 
     /**
      * @param string $msubject
+     *
      * @return LegacySendCampaign
      */
     public function setMsubject($msubject)
     {
         $this->msubject = $msubject;
+
         return $this;
     }
 
     /**
      * @param string $timed_release
+     *
      * @return LegacySendCampaign
      */
     public function setTimedRelease($timed_release)
     {
         $this->timed_release = $timed_release;
+
         return $this;
     }
 
     /**
      * @param string $date
+     *
      * @return LegacySendCampaign
      */
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
     /**
      * @param int $hour
+     *
      * @return LegacySendCampaign
      */
     public function setHour($hour)
     {
         $this->hour = $hour;
+
         return $this;
     }
 
     /**
      * @param string $substitude_name
+     *
      * @return LegacySendCampaign
      */
     public function setSubstitudeName($substitude_name)
     {
         $this->substitude_name = $substitude_name;
+
         return $this;
     }
 
     /**
      * @param string $bill_codes
+     *
      * @return LegacySendCampaign
      */
     public function setBillCodes($bill_codes)
     {
         $this->bill_codes = $bill_codes;
+
         return $this;
     }
 
     /**
      * @param string $message_notes
+     *
      * @return LegacySendCampaign
      */
     public function setMessageNotes($message_notes)
     {
         $this->message_notes = $message_notes;
+
         return $this;
     }
 
     /**
      * @param int $campaign_id
+     *
      * @return LegacySendCampaign
      */
     public function setCampaignId($campaign_id)
     {
         $this->campaign_id = $campaign_id;
+
         return $this;
     }
 
     /**
      * @param int $track_links
+     *
      * @return LegacySendCampaign
      */
     public function setTrackLinks($track_links)
     {
         $this->track_links = $track_links;
+
         return $this;
     }
 
     /**
      * @param string $grp_exclude
+     *
      * @return LegacySendCampaign
      */
     public function setGrpExclude($grp_exclude)
     {
         $this->grp_exclude = $grp_exclude;
+
         return $this;
     }
 
     /**
      * @param string $use_default_footer
+     *
      * @return LegacySendCampaign
      */
     public function setUseDefaultFooter($use_default_footer)
     {
         $this->use_default_footer = $use_default_footer;
+
         return $this;
     }
 
     /**
      * @param string $binding
+     *
      * @return LegacySendCampaign
      */
     public function setBinding($binding)
     {
         $this->binding = $binding;
+
         return $this;
     }
 
     /**
      * @param int $throttle_rate
+     *
      * @return LegacySendCampaign
      */
     public function setThrottleRate($throttle_rate)
     {
         $this->throttle_rate = $throttle_rate;
+
         return $this;
     }
 
     /**
      * @param string $message_name
+     *
      * @return LegacySendCampaign
      */
     public function setMessageName($message_name)
     {
         $this->message_name = $message_name;
+
         return $this;
     }
 
     /**
      * @param int $footer_id
+     *
      * @return LegacySendCampaign
      */
     public function setFooterId($footer_id)
     {
         $this->footer_id = $footer_id;
+
         return $this;
     }
 
     /**
-     * @param boolean $inbox_monitor
+     * @param bool $inbox_monitor
+     *
      * @return LegacySendCampaign
      */
     public function setInboxMonitor($inbox_monitor)
     {
         $this->inbox_monitor = $inbox_monitor;
+
         return $this;
     }
 
@@ -663,11 +713,10 @@ class LegacySendCampaign extends MethodBase
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isInboxMonitor()
     {
         return $this->inbox_monitor;
     }
-
 }

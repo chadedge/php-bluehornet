@@ -1,6 +1,6 @@
 <?php
 
-namespace Dawehner\Bluehornet\Tests\MethodRequests;
+namespace Dawehner\Bluehornet\tests\MethodRequests;
 
 use Dawehner\Bluehornet\MethodRequests\LegacySendCampaign;
 use Dawehner\Bluehornet\Normalizer;
@@ -10,7 +10,6 @@ use Dawehner\Bluehornet\Normalizer;
  */
 class LegacySendCampaignTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testNormalizer()
     {
         $normalizer = new Normalizer();
@@ -56,6 +55,4 @@ class LegacySendCampaignTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('HTML content goes here', $result->getRichMbody());
         $this->assertEquals('Plain Text content goes here', $result->getTextMbody());
     }
-
-
 }

@@ -21,8 +21,9 @@ class Message extends ResponseBase
 
     /**
      * Creates a new Message instance.
+     *
      * @param string $message
-     * @param int $message_id
+     * @param int    $message_id
      * @param string $message_key
      */
     public function __construct($message, $message_id, $message_key)
@@ -55,5 +56,4 @@ class Message extends ResponseBase
     {
         return $this->key;
     }
-
 }

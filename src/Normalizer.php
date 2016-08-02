@@ -27,7 +27,7 @@ class Normalizer implements NormalizerInterface, DenormalizerInterface, Serializ
     {
         $this->normalizer = new ObjectNormalizer(
             new ClassMetadataFactory(
-                new YamlFileLoader(__DIR__ . '/normalizer.yml')
+                new YamlFileLoader(__DIR__.'/normalizer.yml')
             ),
             new SnakeCaseConverter(['methodName'])
         );
@@ -68,6 +68,4 @@ class Normalizer implements NormalizerInterface, DenormalizerInterface, Serializ
     {
         return true;
     }
-
-
 }

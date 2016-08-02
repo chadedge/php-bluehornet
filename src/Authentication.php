@@ -14,6 +14,7 @@ class Authentication
 
     /**
      * Creates a new Authentication instance.
+     *
      * @param $api_key
      * @param $shared_secret
      * @param $response_type

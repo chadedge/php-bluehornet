@@ -11,6 +11,7 @@ class SnakeCaseConverter implements NameConverterInterface
 {
     /**
      * Excluded properties from the camelcasing.
+     *
      * @var array
      */
     protected $excludes = [];
@@ -26,9 +27,9 @@ class SnakeCaseConverter implements NameConverterInterface
      * Creates a new SnakeCaseConverter instance.
      *
      * @param array $excludes
-     *   Properties which should not be camelcased.
+     *                        Properties which should not be camelcased.
      * @param array $mapping
-     *   A hardcoded mapping for names.
+     *                        A hardcoded mapping for names.
      */
     public function __construct(array $excludes = [], array $mapping = [])
     {
@@ -78,6 +79,4 @@ class SnakeCaseConverter implements NameConverterInterface
 
         return $propertyName;
     }
-
-
 }
