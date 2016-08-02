@@ -2,10 +2,13 @@
 
 namespace Dawehner\Bluehornet;
 
+use Dawehner\Bluehornet\MethodResponses\LegacyRetrieveSegment;
 use Dawehner\Bluehornet\MethodResponses\LegacySendCampaign;
 use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
 use Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber;
 use Dawehner\Bluehornet\MethodResponses\Message;
+use Dawehner\Bluehornet\MethodResponses\SegmentCategoryInformation;
+use Dawehner\Bluehornet\MethodResponses\SegmentGroupInformation;
 use Dawehner\Bluehornet\MethodResponses\TransactionalListTemplate;
 use Dawehner\Bluehornet\MethodResponses\TransactionalListTemplates;
 use LSS\Array2XML;
@@ -43,6 +46,10 @@ class Serializer implements SerializerInterface
         $methodName = $array['methodResponse']['item']['methodName'];
         if ($methodName === 'transactional.listtemplates') {
             return $this->deserializeListTemplates($array, $context);
+        }
+
+        if ($methodName === 'legacy.retrieve_segment') {
+            return $this->deserializeLegacyRetrieveSegment($array, $context);
         }
 
         if (empty($array['methodResponse']['item']['responseData'])) {
@@ -83,6 +90,28 @@ class Serializer implements SerializerInterface
 
         $methodResponse = new TransactionalListTemplates($items);
 
+        $response = new Response($context['http_response'], $methodResponse);
+
+        return $response;
+    }
+
+    protected function deserializeLegacyRetrieveSegment($array, $context)
+    {
+        $groupInformatinon = [];
+        if (!empty($array['methodResponse']['item']['responseData']['manifest']['group_data']['group_information'])) {
+            foreach ($array['methodResponse']['item']['responseData']['manifest']['group_data']['group_information'] as $item) {
+                $groupInformatinon[] = $this->serializer->denormalize($item, SegmentGroupInformation::class);
+            }
+        }
+
+        $categoryInformation = [];
+        if (!empty($array['methodResponse']['item']['responseData']['manifest']['category_data']['category_information'])) {
+            foreach ($array['methodResponse']['item']['responseData']['manifest']['category_data']['category_information'] as $item) {
+                $categoryInformation[] = $this->serializer->denormalize($item, SegmentCategoryInformation::class);
+            }
+        }
+
+        $methodResponse = new LegacyRetrieveSegment($groupInformatinon, $categoryInformation);
         $response = new Response($context['http_response'], $methodResponse);
 
         return $response;

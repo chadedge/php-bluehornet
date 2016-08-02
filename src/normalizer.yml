@@ -23,6 +23,20 @@ Dawehner\Bluehornet\MethodsRequests\LegacyManageSubscriber:
         email:
             groups: ['main']
 
+Dawehner\Bluehornet\MethodRequests\LegacyRetrieveSegment:
+    attributes:
+        methodName:
+            groups: ['main']
+        return_group_data:
+            groups: ['main']
+        return_category_data:
+            groups: ['main']
+
+Dawehner\Bluehornet\MethodRequests\TransactionalListTemplates:
+    attributes:
+        methodName:
+            groups: ['main']
+
 Dawehner\Bluehornet\MethodsRequests\LegacySendCampaign:
     attributes:
         methodName:
@@ -94,25 +108,49 @@ Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber:
           groups: ['main']
 Dawehner\Bluehornet\MethodResponses\TransactionalListTemplate:
     attributes:
-          template_id:
-              groups: ['main']
-          from_description:
-              groups: ['main']
-          from_email:
-              groups: ['main']
-          reply_email:
-              groups: ['main']
-          subject:
-              groups: ['main']
-          message_notes:
-              groups: ['main']
-          bill_codes:
-              groups: ['main']
-          template_data:
-              groups: ['main']
-          html:
-              groups: ['main']
-          plain:
-              groups: ['main']
-          binding:
-              groups: ['main']
+        template_id:
+            groups: ['main']
+        from_description:
+            groups: ['main']
+        from_email:
+            groups: ['main']
+        reply_email:
+            groups: ['main']
+        subject:
+            groups: ['main']
+        message_notes:
+            groups: ['main']
+        bill_codes:
+            groups: ['main']
+        template_data:
+            groups: ['main']
+        html:
+            groups: ['main']
+        plain:
+            groups: ['main']
+        binding:
+            groups: ['main']
+
+Dawehner\Bluehornet\MethodResponses\SegmentGroupInformation:
+    attributes:
+        group_name:
+            groups: ['main']
+        group_id:
+            groups: ['main']
+        group_order:
+            groups: ['main']
+        group_hidden:
+            groups: ['main']
+        category_id:
+            groups: ['main']
+
+Dawehner\Bluehornet\MethodResponses\SegmentCategoryInformation:
+    attributes:
+        group_name:
+            groups: ['main']
+        group_id:
+            groups: ['main']
+        group_order:
+            groups: ['main']
+        group_hidden:
+            groups: ['main']
