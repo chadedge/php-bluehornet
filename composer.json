@@ -1,6 +1,6 @@
 {
     "name": "dawehner/php-bluehornet",
-    "description": "Provides an easy to use wrapper for the bluehornet email service.",
+    "description": "Provides an easy to use wrapper for the bluehornet email service",
     "type": "library",
     "require": {
         "guzzlehttp/guzzle": "~6",
