@@ -30,7 +30,7 @@ class Authentication
 
     public function validate()
     {
-        if (!in_array($this->response_type, ['xml', 'php'])) {
+        if (!in_array($this->response_type, ['xml', 'php'], TRUE)) {
             return false;
         }
 
