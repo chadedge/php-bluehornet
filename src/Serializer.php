@@ -2,6 +2,7 @@
 
 namespace Dawehner\Bluehornet;
 
+use Dawehner\Bluehornet\MethodResponses\CouldNotAuthenticateError;
 use Dawehner\Bluehornet\MethodResponses\LegacyRetrieveSegment;
 use Dawehner\Bluehornet\MethodResponses\LegacySendCampaign;
 use Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers;
@@ -43,6 +44,10 @@ class Serializer implements SerializerInterface
     {
         $array = XML2Array::createArray($data);
 
+        if (!empty($array['methodResponse']['item']['error']['@cdata'])) {
+            return $this->deserializeError($array, $context);
+        }
+
         $methodName = $array['methodResponse']['item']['methodName'];
         if ($methodName === 'transactional.listtemplates') {
             return $this->deserializeListTemplates($array, $context);
@@ -79,6 +84,13 @@ class Serializer implements SerializerInterface
         $response = new Response($context['http_response'], $methodResponse);
 
         return $response;
+    }
+
+    protected function deserializeError(array $array, array $context)
+    {
+        $responseCode = !empty($array['methodResponse']['item']['responseData']['responseCode']['@cdata']) ? $array['methodResponse']['item']['responseData']['responseCode']['@cdata'] : 0;
+        $responseText = !empty($array['methodResponse']['item']['responseText']['@cdata']) ? $array['methodResponse']['item']['responseText']['@cdata'] : '';
+        return new CouldNotAuthenticateError($responseCode, $responseText);
     }
 
     protected function deserializeListTemplates(array $array, array $context)
