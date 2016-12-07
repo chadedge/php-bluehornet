@@ -66,6 +66,6 @@ class Normalizer implements NormalizerInterface, DenormalizerInterface, Serializ
      */
     public function supportsNormalization($data, $format = null)
     {
-        return true;
+        return !is_array($data) && !is_scalar($data);
     }
 }
