@@ -1,3 +1,5 @@
 .idea
 vendor
-
+*.patch
+*.swp
+/test.php
