@@ -24,7 +24,7 @@ class LegacySendCampaignTest extends \PHPUnit_Framework_TestCase
             ->setMsubject('Spring Offer 25% Off!')
             ->setTrackLinks(1);
 
-        $result = $normalizer->normalize($campaign);
+        $result = $normalizer->normalize($campaign, NULL, ['groups' => ['main']]);
 
         $this->assertEquals('legacy.send_campaign', $result['methodName']);
         $this->assertEquals(10, $result['grp']);
@@ -48,7 +48,7 @@ class LegacySendCampaignTest extends \PHPUnit_Framework_TestCase
 
         $normalizer = new Normalizer();
         /** @var \Dawehner\Bluehornet\MethodRequests\LegacySendCampaign $result */
-        $result = $normalizer->denormalize($data, LegacySendCampaign::class);
+        $result = $normalizer->denormalize($data, LegacySendCampaign::class, ['groups' => ['main']]);
 
         $this->assertEquals(10, $result->getGrp());
         $this->assertEquals('legacy.send_campaign', $result->getMethodName());

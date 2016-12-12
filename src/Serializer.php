@@ -48,7 +48,7 @@ class Serializer implements SerializerInterface
             return $this->deserializeError($array, $context);
         }
 
-        $methodName = $array['methodResponse']['item']['methodName'];
+        $methodName = !empty($array['methodResponse']['item']['methodName']) ? $array['methodResponse']['item']['methodName'] : '';
         if ($methodName === 'transactional.listtemplates') {
             return $this->deserializeListTemplates($array, $context);
         }

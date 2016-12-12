@@ -16,7 +16,14 @@ Dawehner\Bluehornet\Authentication:
         no_halt:
           groups: ['main']
 
-Dawehner\Bluehornet\MethodsRequests\LegacyManageSubscriber:
+Dawehner\Bluehornet\MethodRequests\Message:
+    attributes:
+        messageKey:
+          groups: ['main']
+        methodName:
+          groups: ['main']
+
+Dawehner\Bluehornet\MethodRequests\LegacyManageSubscriber:
     attributes:
         methodName:
             groups: ['main']
@@ -37,7 +44,7 @@ Dawehner\Bluehornet\MethodRequests\TransactionalListTemplates:
         methodName:
             groups: ['main']
 
-Dawehner\Bluehornet\MethodsRequests\LegacySendCampaign:
+Dawehner\Bluehornet\MethodRequests\LegacySendCampaign:
     attributes:
         methodName:
             groups: ['main']
@@ -67,7 +74,7 @@ Dawehner\Bluehornet\MethodsRequests\LegacySendCampaign:
             groups: ['main']
         hour:
             groups: ['main']
-        substitute_name:
+        substitude_name:
             groups: ['main']
         bill_codes:
             groups: ['main']
@@ -100,6 +107,18 @@ Dawehner\Bluehornet\MethodResponses\LegacyDeleteSubscribers:
           groups: ['main']
         reason:
           groups: ['main']
+
+Dawehner\Bluehornet\MethodResponses\Message:
+    attributes:
+        methodName:
+          groups: ['main']
+        message:
+          groups: ['main']
+        id:
+          groups: ['main']
+        key:
+          groups: ['main']
+
 Dawehner\Bluehornet\MethodResponses\LegacyManageSubscriber:
     attributes:
         message:
